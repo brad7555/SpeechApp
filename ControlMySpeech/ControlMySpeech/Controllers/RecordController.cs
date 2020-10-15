@@ -42,6 +42,29 @@ namespace ControlMySpeech.Controllers
 
             return RedirectToAction("Index"); 
         }
+        public ActionResult DeleteFile()
+        {
+            //Grabbing the ID from the URL that was sent via Ajax 
+            int id = Int32.Parse(Request.QueryString["ID"]);
+           //Matching the AudioFile to the corresponding one from the DB 
+            List<AudioFile> ad = db.AudioFiles.Where(a => a.ID.Equals(id)).ToList();
+
+            //Crafting the path to the file within the system to be deleted
+            string fullPath = Request.MapPath(ad[0].FilePath); 
+            //Checking to see if file exists within the system
+            if (System.IO.File.Exists(fullPath))
+            {
+                //If the file exists, then it is deleted
+                System.IO.File.Delete(fullPath); 
+            }
+
+            //Removing the instance from the DB, and saving the changes
+            db.AudioFiles.Remove(ad[0]);
+            db.SaveChanges(); 
+
+
+            return Json(true); 
+        }
         public ActionResult Add()
         {
             return View(); 
