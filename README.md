@@ -12,3 +12,10 @@ One thing I have learned over the past few months: sharing your audio recordings
 Now this is obviously the main feature, and the one I started with, but not the only one. I will outline the features later on, in a separate section, as this section has been long enough. I hope this gave you a little insight into my extreme passion behind this app, and a little of the direction where I want to take it. New ideas are always welcome!
 
 If you would like to see my ideas, please visit the Controlling My Speech PDF, and read through it! 
+
+**Coding Conventions**
+I don't have too many preferences on conventions. 
+  * Making sure your code is clean and commented
+  * Write CSS and Javascript code in separate files, and link them
+  * In databases, primary keys are to be named ID, and foreign keys are name ItemID. 
+  * Using C# in the backend 
