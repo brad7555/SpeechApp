@@ -14,8 +14,13 @@ Now this is obviously the main feature, and the one I started with, but not the 
 If you would like to see my ideas, please visit the Controlling My Speech PDF, and read through it! 
 
 **Coding Conventions**
+
 I don't have too many preferences on conventions. 
+  
   * Making sure your code is clean and commented
+  
   * Write CSS and Javascript code in separate files, and link them
+  
   * In databases, primary keys are to be named ID, and foreign keys are name ItemID. 
+  
   * Using C# in the backend 
