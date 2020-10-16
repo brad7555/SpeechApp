@@ -1,6 +1,6 @@
 # SpeechApp
 
-**Controlling My Speech
+**Controlling My Speech**
 
 I will start by saying that this is an app being created for stutterers (or people with speech impediments of any kind). Personally, I have been a stutterer for my entire life, and have spent many hours with speech pathologists, working tirelessly on my speaking ability. It is a grueling journey, where you spend much of your day trying to figure out something so simple like talking. Simply speaking for stutterers can feel like navigating an intricate maze. Going through speech therapy is hard, and doing it virtually is even harder. 
 
