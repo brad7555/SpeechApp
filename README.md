@@ -24,3 +24,7 @@ I don't have too many preferences on conventions.
   * In databases, primary keys are to be named ID, and foreign keys are name ItemID. 
   
   * Using C# in the backend 
+
+**Contributing**
+
+If you want to contribute to my application, fork my code, create you own branch for the feature you are working on, and start coding. Once you are ready to push, pull down the current dev branch and solve all merge conflicts yourseld. make sure everything works before you create a pull request. When creating your pull request, make sure it is going to the dev branch, so that I can review it and test it before it goes to master. 
