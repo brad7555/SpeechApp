@@ -11,7 +11,7 @@ Taking notes virtually, all while trying to focus on talking can be hard. I want
 One thing I have learned over the past few months: sharing your audio recordings over zoom sucks! You either have to email them (which files can be too big) or play them from your phone over zoom (not cool). Even if you manage to email your audio files, the clinician still has to download them, store them on their computer, and match your relaxation rating, fluency rating, and notes you send them to the audio file. This is the main driving force behind my app. This is what caused me to start coding. I wanted a place where I could upload my audio files, along with the specific ratings, as well as some notes and have it be displayed on one single page. 
 Now this is obviously the main feature, and the one I started with, but not the only one. I will outline the features later on, in a separate section, as this section has been long enough. I hope this gave you a little insight into my extreme passion behind this app, and a little of the direction where I want to take it. New ideas are always welcome!
 
-If you would like to see my ideas, please visit the Controlling My Speech PDF, and read through it! 
+If you would like to see my ideas, please visit the **Controlling My Speech PDF**, and read through it! 
 
 **Coding Conventions**
 
