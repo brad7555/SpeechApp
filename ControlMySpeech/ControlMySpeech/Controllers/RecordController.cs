@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using ControlMySpeech.Models; 
 
 namespace ControlMySpeech.Controllers
@@ -27,20 +30,43 @@ namespace ControlMySpeech.Controllers
             /*Getting all of the necessary info from the users audio file*/
             string name = Path.GetFileName(fileUpload.FileName);
             int fileSize = fileUpload.ContentLength;
-            fileUpload.SaveAs(Server.MapPath("~/AudioFileUpload/" + name));
 
-            //Creating new AudioFile to be filled and added to the DB
-            AudioFile audiofile = new AudioFile();
-            audiofile.Name = name;
-            audiofile.FileSize = fileSize;
-            audiofile.FilePath = "~/AudioFileUpload/" + name;
-
-            //Adds the populated AudioFile to the DB and saves the changes 
-            db.AudioFiles.Add(audiofile);
-            db.SaveChanges(); 
+            //Create bool var to control if the saving continues
+            bool check = false;
 
 
-            return RedirectToAction("Index"); 
+            //Checking to see if file name already exists in table 
+            List<AudioFile> ad = db.AudioFiles.Where(s => s.Name.Contains(name)).ToList();
+
+            if (ad == null)
+            {
+                check = true; 
+            }
+            
+
+
+            if (check == true)
+            {
+                //Creating new AudioFile to be filled and added to the DB
+                fileUpload.SaveAs(Server.MapPath("~/AudioFileUpload/" + name)); //Adding the file to the filesystem
+                AudioFile audiofile = new AudioFile();
+                audiofile.Name = name;
+                audiofile.FileSize = fileSize;
+                audiofile.FilePath = "~/AudioFileUpload/" + name;
+
+                //Adds the populated AudioFile to the DB and saves the changes 
+                db.AudioFiles.Add(audiofile);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            return RedirectToAction("Index");
+
+
+
+
+
+
         }
         public ActionResult DeleteFile()
         {
