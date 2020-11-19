@@ -1,2 +1,2 @@
 ﻿
-select * from AudioFiles 
+select * FROM AudioFiles

@@ -14,9 +14,10 @@
         success: success,
         error: errorOnAjax
     });
+    window.location.href = "/Record/Index";
 }
 function success() {
-    console.log("success"); 
+   
 }
 function errorOnAjax() {
     console.log("Error on Ajax Return");

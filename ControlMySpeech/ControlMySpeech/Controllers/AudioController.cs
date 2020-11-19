@@ -13,7 +13,7 @@ namespace ControlMySpeech.Controllers
 {
     public class AudioController : Controller
     {
-        private RecordingDBEntities db = new RecordingDBEntities(); 
+        private SpeechContext db = new SpeechContext(); 
         // GET: Audio
         public ActionResult Index()
         {

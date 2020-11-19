@@ -1,4 +1,8 @@
-﻿function DeleteFile(id) {
+﻿window.onload = function () {
+    window.location.assign(window.location.reload());
+    }
+}
+function DeleteFile(id) {
     //Sending the ID to the console for testing 
     console.log(id);
 

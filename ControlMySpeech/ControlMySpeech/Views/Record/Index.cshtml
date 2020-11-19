@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-@model IEnumerable<ControlMySpeech.Models.AudioFile>
+@model IEnumerable<ControlMySpeech.Models.ViewModels.AudioWithRatings>
 
 <!DOCTYPE html>
 
@@ -15,8 +15,11 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/Record.js"></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript">
+
         $(document).ready(function () {
             $('#dataTable').DataTable();
 
@@ -37,7 +40,7 @@
         <h3 class="text-center text-uppercase">Speech Recordings</h3>
         <h2>@ViewBag.error</h2>
         <div class="card">
-            
+
             <div class="card-body">
                 <div class="row">
                     <button style="margin-left: 27px;margin-bottom:10px;" type="button" class="btn btn-primary rounded-0" data-toggle="modal" data-target="#myModal">
@@ -64,8 +67,8 @@
                                                 <div class="input-group-append">
                                                     <input type="submit" id="btnUpload" class="btn btn-secondary" value="Upload" />
                                                 </div>
-                                              
-                                              
+
+
                                             </div>
                                         </div>
                                     }
@@ -78,37 +81,45 @@
                         </div>
                     </div>
                 </div>
-                <table id="dataTable" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>File Size(MB)</th>
-                            <th>Play Audio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
 
-                                <td>@item.ID</td>
-                                <td>@item.Name</td>
-                                <td>@item.FileSize</td>
-                                <td>
-                                    <audio controls>
-                                        <source src="@Url.Content(@item.FilePath)" type="audio/ogg">
-                                    </audio>
-                                </td>
-                                <td>
-                                    <button type="button" name="@item.ID" onclick="DeleteFile(this.name)">Delete</button>
-                                </td>
 
-                            </tr>
+                <div class="album py-5 bg-light">
+                    <div class="container">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-md-4">
+                                    <div class="card mb-4 box-shadow">
+                                        <div style=" border-bottom: solid; background-color:#898483; padding-left: 5px; padding-top: 5px;">
+                                            <audio controls>
+                                                <source src="@Url.Content(@item.FilePath)" type="audio/ogg">
+                                            </audio>
+                                        </div>
+                                        <div class="card-body">
 
-                        }
-                    </tbody>
-                </table>
+                                            <em><b> Name:</b></em> @item.Name <br />
+                                            <em><b>Relaxation Rating:</b></em> @item.Relaxation <br />
+                                            <em><b>Tension Rating:</b></em> @item.Tension <br />
+                                            <em><b>Comments:</b></em> <br /> @item.Comments
+
+                                            <div class="d-flex justify-content-between align-items-center" style="padding-top: 5px;">
+                                                <div class="btn-group">
+                                                    <button type="button" name="@item.ID" class="btn btn-sm btn-outline-secondary" onclick="DeleteFile(this.name)">Delete</button>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -117,3 +128,4 @@
 </body>
 </html>
 
+@Scripts.Render("~/Scripts/Record.js")
