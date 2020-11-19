@@ -38,7 +38,7 @@ namespace ControlMySpeech.Controllers
             //Checking to see if file name already exists in table 
             List<AudioFile> ad = db.AudioFiles.Where(s => s.Name.Contains(name)).ToList();
 
-            if (ad == null)
+            if (ad.Count == 0)
             {
                 check = true; 
             }
@@ -57,7 +57,8 @@ namespace ControlMySpeech.Controllers
                 //Adds the populated AudioFile to the DB and saves the changes 
                 db.AudioFiles.Add(audiofile);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                int d = audiofile.ID; 
+                return RedirectToAction("Ratings", new { id = d}); 
 
             }
             return RedirectToAction("Index");
@@ -68,6 +69,23 @@ namespace ControlMySpeech.Controllers
 
 
         }
+        public ActionResult Ratings(string id)
+        {
+            ViewBag.ID = id; 
+            return View(); 
+        }
+        public JsonResult SaveRatings(string Comments)
+        {
+            string id = Request.QueryString["AudioID"];
+            string tension = Request.QueryString["tension"];
+            string relax = Request.QueryString["relax"]; 
+            
+            
+            
+            return Json(false); 
+        }
+
+
         public ActionResult DeleteFile()
         {
             //Grabbing the ID from the URL that was sent via Ajax 
