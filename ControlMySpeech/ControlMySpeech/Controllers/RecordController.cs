@@ -81,13 +81,16 @@ namespace ControlMySpeech.Controllers
             return RedirectToAction("Index");
 
 
-
+           
 
 
 
         }
         public ActionResult Ratings(string id)
         {
+            string sd = "Before";
+            char f = sd[1]; 
+
             ViewBag.ID = id; 
             return View(); 
         }
