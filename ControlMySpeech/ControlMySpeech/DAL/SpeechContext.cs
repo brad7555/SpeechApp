@@ -14,6 +14,7 @@ namespace ControlMySpeech.Models
 
         public virtual DbSet<AudioFile> AudioFiles { get; set; }
         public virtual DbSet<Rating> Ratings { get; set; }
+        public virtual DbSet<Word> Words { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -22,5 +23,6 @@ namespace ControlMySpeech.Models
                 .WithRequired(e => e.AudioFile)
                 .HasForeignKey(e => e.AudioID);
         }
+
     }
 }
